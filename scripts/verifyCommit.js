@@ -1,6 +1,4 @@
-import fs from 'fs';
-
-const msg = fs
+const msg = require('fs')
     .readFileSync('.git/COMMIT_EDITMSG', 'utf-8')
     .trim() // 先去 .git/COMMIT_EDITMSG 文件中读取了 commit 提交的信息
 

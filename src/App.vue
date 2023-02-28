@@ -25,6 +25,23 @@ import HelloWorld from './components/HelloWorld.vue'
       <el-footer>Footer</el-footer>
     </el-container>
   </el-container>
+  <hr>
+  <div>
+    <el-button>普按钮</el-button>
+    <el-button size="small">小按钮</el-button>
+
+    <el-button type="primary">
+      主按钮
+    </el-button>
+    <el-button type="success">
+      绿按钮
+    </el-button>
+    <el-button>普按钮</el-button>
+    <el-button size="small">
+      小按钮
+    </el-button>
+
+  </div>
 </template>
 
 <style scoped>
