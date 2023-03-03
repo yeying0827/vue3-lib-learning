@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import {emitter} from "../../emitter";
+// import {emitter} from "../../emitter";
 import {inject} from "vue";
 import {formItemKey} from './type';
 
