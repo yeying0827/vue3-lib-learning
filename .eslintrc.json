@@ -20,8 +20,5 @@
         "@typescript-eslint"
     ],
     "rules": {
-    },
-    "exclude": [
-        "**/?(*.)+(spec).[jt]s?(x)"
-    ]
+    }
 }

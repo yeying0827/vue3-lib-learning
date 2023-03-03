@@ -1,8 +1,48 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import {ref} from 'vue';
+import {FormType} from './components/form/type'
+
+const loginForm = ref({
+  username: '',
+  password: ''
+});
+const loginRules = ref({
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur'},
+    { min: 1, max: 20, message: '用户名为1到20个字符', trigger: 'blur'},
+  ],
+  password: [
+    { required: true, message: '请输入密码'}
+  ]
+});
+const form = ref<FormType>();
+function handleSubmit() {
+  form.value?.validate((valid: boolean) => {
+    if (valid) {
+      console.log(loginForm.value);
+    } else {
+      alert('请正确填写表单！');
+      return false;
+    }
+  })
+}
 </script>
 
 <template>
+  <el-container>
+    <el-form :model="loginForm" :rules="loginRules" ref="form">
+      <el-form-item label="用户名" prop="username">
+        <el-input v-model="loginForm.username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="password">
+        <el-input v-model="loginForm.password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button @click="handleSubmit" type="primary">登录</el-button>
+      </el-form-item>
+    </el-form>
+  </el-container>
+  <br>
   <el-container>
     <el-header>Header</el-header>
     <el-main>Main</el-main>
