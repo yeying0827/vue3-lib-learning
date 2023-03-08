@@ -4,6 +4,7 @@ import App from './App.vue'
 import ElContainer from "./components/container";
 import ElButton from './components/button';
 import ElForm from './components/form';
+import ElNotification from './components/notification';
 
 const app = createApp(App);
 app.config.globalProperties.$AILEMENTE = {
@@ -12,4 +13,5 @@ app.config.globalProperties.$AILEMENTE = {
     app.use(ElContainer)
         .use(ElButton)
         .use(ElForm)
+        .use(ElNotification)
         .mount('#app')

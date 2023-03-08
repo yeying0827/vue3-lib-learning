@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import {FormType} from './components/form/type'
+import {NotificationFun} from "./components/notification/NotificationFun";
 
 const loginForm = ref({
   username: '',
@@ -26,9 +27,31 @@ function handleSubmit() {
     }
   })
 }
+
+function showSuccess() {
+  // @ts-ignore
+  NotificationFun.success({
+    title: '成功',
+    message: '这是一条成功的提示消息111',
+    type: 'success'
+  });
+}
+function showFail() {
+  // @ts-ignore
+  NotificationFun.error({
+    title: '失败',
+    message: '这是一条失败的提示消息111',
+    type: 'error'
+  });
+}
 </script>
 
 <template>
+  <el-container>
+    <el-notification title="成功" message="这是一条成功的提示消息"></el-notification>
+    <el-button @click="showSuccess">点击显示Notification组件</el-button>
+    <el-button @click="showFail">点击显示Notification组件</el-button>
+  </el-container>
   <el-container>
     <el-form :model="loginForm" :rules="loginRules" ref="form">
       <el-form-item label="用户名" prop="username">
