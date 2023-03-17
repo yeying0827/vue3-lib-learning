@@ -5,6 +5,7 @@ import ElContainer from "./components/container";
 import ElButton from './components/button';
 import ElForm from './components/form';
 import ElNotification from './components/notification';
+import ElTree from './components/tree';
 
 const app = createApp(App);
 app.config.globalProperties.$AILEMENTE = {
@@ -14,4 +15,5 @@ app.config.globalProperties.$AILEMENTE = {
         .use(ElButton)
         .use(ElForm)
         .use(ElNotification)
+        .use(ElTree)
         .mount('#app')

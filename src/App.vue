@@ -9,14 +9,15 @@ const loginForm = ref({
 });
 const loginRules = ref({
   username: [
-    { required: true, message: '请输入用户名', trigger: 'blur'},
-    { min: 1, max: 20, message: '用户名为1到20个字符', trigger: 'blur'},
+    {required: true, message: '请输入用户名', trigger: 'blur'},
+    {min: 1, max: 20, message: '用户名为1到20个字符', trigger: 'blur'},
   ],
   password: [
-    { required: true, message: '请输入密码'}
+    {required: true, message: '请输入密码'}
   ]
 });
 const form = ref<FormType>();
+
 function handleSubmit() {
   form.value?.validate((valid: boolean) => {
     if (valid) {
@@ -36,6 +37,7 @@ function showSuccess() {
     type: 'success'
   });
 }
+
 function showFail() {
   // @ts-ignore
   NotificationFun.error({
@@ -44,9 +46,20 @@ function showFail() {
     type: 'error'
   });
 }
+
+const data = [
+  {
+    id: 1,
+    label: '一级 1',
+    children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}]}]
+  }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}]}
+];
 </script>
 
 <template>
+  <el-container>
+    <el-tree :data="data" :default-expand-all="false" :defaultNodeKey="{childNodes: 'children'}"></el-tree>
+  </el-container>
   <el-container>
     <el-notification title="成功" message="这是一条成功的提示消息"></el-notification>
     <el-button @click="showSuccess">点击显示Notification组件</el-button>
@@ -114,9 +127,11 @@ function showFail() {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
@@ -127,16 +142,20 @@ body {
   width: 1000px;
   margin: 10px auto;
 }
+
 .el-header,
 .el-footer {
   background-color: #ccc;
 }
+
 .el-main {
   background-color: #eee;
 }
+
 .el-aside {
   background-color: #ddd;
 }
+
 .el-header,
 .el-aside,
 .el-footer {
@@ -144,6 +163,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .el-main {
   line-height: 160px;
 }
